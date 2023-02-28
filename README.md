@@ -7,7 +7,8 @@ Minerva is a software tool that processes raw GC-MS data from multiple samples a
 - Graphic User Interface.
 - Configurable to different sample matrices and data analysis approaches.
 
-Minerva is an open source software released under the MIT license. It was developed by Ryan Snowdon at the University of Calgary, Department of Geoscience, under the supervision of Renzo Silva and funding from Dr. Steve Larter’s group (PRG, via Project Rip van Winkle), and a GRI grant. It partially uses the [PyMassSpec · PyPI](https://pypi.org/project/PyMassSpec/) library, which was released under the GNU General Public License version 2.
+Minerva is an open source software released under the MIT license. It was developed by Ryan Snowdon at the University of Calgary, Department of Geoscience, under the supervision of Renzo Silva and funding from Dr. Steve Larter’s group (PRG, via Project Rip van Winkle), and a GRI grant. Visit the [PRG group](https://ucalgary.ca/prg) at the University of Calgary webpage for more information on the academic context Minerva was created. 
+
 
 # Instructions
 
@@ -57,7 +58,7 @@ Method items determine how samples are processed in Minerva, which peaks are con
 ## File Locations
 Files and directories that are not typically changed when a new project is run are listed in this tab. These should be set up on first install and can then be basically ignored.
 
-**Excel Library**: Excel file with a user library of compounds and their identifying RT and largest MS fragments. Should list CAS number to reduce ambiguity. Can also contain other compound data like formula, MW, odor etc.  
+**Excel Library**: Excel file with a user library of compounds and their identifying RT and largest MS fragments. Should list CAS number to reduce ambiguity. Can also contain other compound data like formula, molecular weight, etc.  
 **Temporary Directory**: Location to save checkpoint files that are used to speed the processing of files or experiments multiple times. Any files here can be deleted and they will be recreated as required, but alignment of large sets can take hours, which will be skipped if the cached results file exists (keyed to the exact file and experiment name). These can be large files, make sure there is ~300MB per file and ~1GB per alignment experiment.  
 **Recalculate Alignment Cache**: When checked, processing will be done regardless of the cached file. This is required for method changes to be used when an experiment with the current name already exists but you require results with different settings.
 
@@ -75,8 +76,13 @@ This includes 3 sections:
 **Utilities/minerva_xl_compare.py**  
 Result comparison tool, including a comparison of [peak_ID, retention time, corrected area, and others].
 
+## Troubleshooting
+We always appreciate feedback and suggestions. If you encounter any problems or have any questions, please feel free to submit an issue to our GitHub repo.
+
 # Acknowledgments
-This research was undertaken thanks in part to funding from the Canada First Research Excellence. 
+This research was undertaken thanks in part to funding from the Canada First Research Excellence.   
+Minerva partially uses the [PyMassSpec · PyPI](https://pypi.org/project/PyMassSpec/) library, which was released under the GNU General Public License version 2.
+
 We would like to acknowledge the support of the following people and organizations:
 - Lloyd Snowdon, Kim Nightingale, and Mengsha Yin as early adopters.  
 - Dr. Steve Larter and the PRG group, including the Project Rip van Winkle team and sponsors.  
