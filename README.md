@@ -15,10 +15,11 @@ Minerva is an open source software released under the MIT license. It was develo
 Download the .zip file under */windows_build* and execute **main.exe**.
 Once Minerva is running you should see two windows:
 
-*status*: generally the status window can be ignored or minimized unless there is a problem, or you would like more details about what the software is currently doing.
+*status*: generally the status window can be ignored or minimized unless there is a problem, or you would like more details about what the software is currently doing.  
 ![Minerva empty terminal window](docs/Minerva_w_terminal.png?raw=true)
 
-*main interface*: the main interface is grouped into three sections of configuration options, and buttons to start processing and display results, detailed below.
+*main interface*: the main interface is grouped into three sections of configuration options, and buttons to start processing and display results, detailed below.  
+
 ![Minerva main window](docs/Minerva_w_main_menu.png?raw=true)
 
 ## Experiment
