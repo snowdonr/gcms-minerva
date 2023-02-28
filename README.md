@@ -79,14 +79,7 @@ Other Tools
 Utilities/minerva_xl_compare.py
 Result comparison tool, including a comparison of [peak_ID, retention time, corrected area, and others].
 
-Future work:
-If the external list only contains expected peak_ID - not RT or area:
-Export results of matched peaks to a separate table. 
-If the external list is from another sample, compare:
-# Peaks found
-Average area of ID'd peaks 
-RT error of ID'd peak
-If the external list includes a sample that is also included in the new batch (including standard mixtures):
-All above + quality control charts with accepted variances (radar plot might also work)
-Quality control factors may include ratios of known peaks to help diagnosis.
-We can think of a metric for sample similarity.
+
+
+
+# Acknowledgments
