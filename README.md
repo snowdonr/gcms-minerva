@@ -1,13 +1,13 @@
 # gcms-minerva
 
 Once Minerva is running (execute main.exe in the .zip file under windows_build) you should see two windows, status:
-![Minerva empty terminal window](https://github.com/snowdonr/gcms-minerva/tree/main/docs/Minerva_w_terminal.png?raw=true)
-<img src="https://github.com/snowdonr/gcms-minerva/tree/main/docs/Minerva_w_terminal.png?raw=true">
+![Minerva empty terminal window](docs/Minerva_w_terminal.png?raw=true)
+<img src="https://github.com/snowdonr/gcms-minerva/blob/main/docs/Minerva_w_terminal.png?raw=true">
 
 And the main interface:
 
-![Minerva main window](https://github.com/snowdonr/gcms-minerva/tree/main/docs/Minerva_w_main_menu.png?raw=true)
-<img src="https://github.com/snowdonr/gcms-minerva/tree/main/docs/Minerva_w_main_menu.png?raw=true">
+![Minerva main window](docs/Minerva_w_main_menu.png?raw=true)
+<img src="https://github.com/snowdonr/gcms-minerva/blob/main/docs/Minerva_w_main_menu.png?raw=true">
 
 Generally the status window can be ignored or minimized unless there is a problem, or you would like more details about what the software is currently doing.
 
