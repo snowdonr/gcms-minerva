@@ -1,0 +1,11 @@
+minerva-pyms
+scipy
+pandas
+matplotlib
+wxPython
+libgtkmm-3.0-1
+libnotify4
+sqlalchemy
+netcdf4
+pymzml
+openpyxl

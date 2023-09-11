@@ -49,7 +49,7 @@ class Analysis_Set(object):
         else:
             logging.info(f"Beginning alignment of peaks for {analysis_name}")
             output_directory = pathlib.Path(self.config.analysis_directory)
-            self._alignment_data = align.Align(analysis_name, [], test_sample_set, cache_directory, output_directory, self.config)
+            self._alignment_data = align.Align(analysis_name, test_sample_set, cache_directory, output_directory, self.config)
 
     def merge_aligned_peaks(self):
         '''

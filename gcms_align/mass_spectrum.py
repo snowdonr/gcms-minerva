@@ -23,6 +23,7 @@ class MassSpectrumEntry(sql_base.Base):
     mass = sqlalchemy.Column(sqlalchemy.Integer, nullable=True)  # TODO: Shouldn't be null
     intensity = sqlalchemy.Column(sqlalchemy.Float, nullable=True)
     area = sqlalchemy.Column(sqlalchemy.Float, nullable=True)
+    fraction = sqlalchemy.Column(sqlalchemy.Float, nullable=True)
     spectrum_id = sqlalchemy.Column(sqlalchemy.Integer, sqlalchemy.ForeignKey('Mass_Spectrum.id'))
     spectrum = sqlalchemy.orm.relationship("MassSpectrum_SQL", back_populates="values")
 

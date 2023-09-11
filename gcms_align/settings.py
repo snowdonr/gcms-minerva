@@ -16,7 +16,7 @@ class Setting(object):
     '''
 
     settings_version = "0.9"
-    method_analysis_name = "Requires Unique Analysis Name"
+    method_analysis_name = "Analysis Name"
     experiment_name = "Experiment X"
     # **NOTE! Changes here may require manual deletion of invalid pickle temporary files**
     data_path = r"C:/GCMS/Minerva/SourceFolder.AIA"
@@ -27,7 +27,7 @@ class Setting(object):
     user_library_location = "C:/GCMS/Minerva/Libraries/UserLibrary.xlsx"
     output_sqlite = True
 
-    main_nist_path = r"C:/NIST11/MSSEARCH/mainlib"
+    main_nist_path = r"C:/NIST11/MSSEARCH/mainlib"  # Unused
     nist_working_dir_path = r"C:/GCMS/Minerva/Data_Cache"
 
     read_pickle = True
@@ -61,6 +61,11 @@ class Setting(object):
     # Define the within-state alignment parameters.
     rt_sensitivity_s = 2.5  # rt modulation [s]
     gap_penalty = 0.40
+    max_alignment_score = 0.7  # 0 best, 1 worst score; Eliminate matches above this threshold
+    max_alternate_match_score = 0.5  # All possibilites below this score will be considered for alignment
+    mismatch_score = 1.0  # How to adjust the total alignment score when a peak has no matches
+    align_section_size = 12
+    align_section_lookahead = 15
 
     align_multiprocess = False
     align_sparse_mode = True  # Non-exhaustive alignment check; i.e. check less alignment options
@@ -69,12 +74,16 @@ class Setting(object):
     align_score_full = False
     align_score_backtrack = 4  # Reverse check of the ~diagonal score matrix
     align_end_row_check = 80
+    
+    align_calculate_alternative = True
+    ll_align_alg = False
 
     library_rt_scale = 2.5  # multiplier applied to rt_sensitivity for library scoring
     minimum_compound_score = 0.001  # score to list compound option in result
     # spectrum_merge_required_match_portion = 0.3
 
     limit_loading_memory = False
+    identify_minimum_area = 30000
 
     meta_data_excel = False
     merge_aligned_peaks = True
@@ -105,6 +114,10 @@ class Setting(object):
     # normalize_mean = True
     # normalize_std = False
     profile_load = False
+    comparison_export = False
+    comparison_skip_empty = True
+    sample_label_extract_re = r"\D*(\d+)\D*.*"
+    # .*-/d+-(.*)-.*
     blank_name_search = "qc-etoh"
     standard_name_search = "std-"
 

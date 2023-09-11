@@ -55,18 +55,20 @@ class SampleSet(collections.UserList):
             progress_value = 0
 
         excel_map = ExcelMap(config)
-        if False and config.meta_data_excel and sample_relation_path.is_file():
+        if False and config.meta_data_excel and sample_relation_path.is_file():  # Disabled
             print(f"STATUS: Finished scanning {directory_path}, checking against excel sheet {sample_relation_path}")
             excel_map.file_report(sample_path_list)
 
         print(f"Beginning load of {len(sample_path_list)} files")
         logging.info(f"Start: {datetime.datetime.now()}")
+        opened_file_count = 0
         pickle_samples = []
         pickle_paths = [self._get_pickled_path(path, config) for path in sample_path_list if path.suffix.lower() != ".pickle"]
         if config.read_pickle and len(pickle_paths) > 0:
             for pickle_path in pickle_paths:
                 if pickle_path.is_file() or pickle_path.with_suffix(pickle_path.suffix+".cmp").is_file():
-                    print(f"Opening: {pickle_path}")
+                    print(f"Opening [{opened_file_count}/{len(sample_path_list)}]: {pickle_path}")
+                    opened_file_count += 1
                     logging.info(f"Opening: {pickle_path}")
                     try:
                         if pickle_path.is_file():
@@ -112,6 +114,7 @@ class SampleSet(collections.UserList):
             return False
 
         for current_sample in self.data:
+            current_sample.config = self.config  # override cached configuration TODO: Don't cache it at all
             # current_sample.load_meta_from_excel(excel_map)
             current_sample.check_type()
 
@@ -437,6 +440,7 @@ class Sample(sql_base.Base):
         self.min_mass = None
         self.max_mass = None
         self._tic = None
+        self.total_area = None
 
         self.get_sample_number()
         self.peak_source = peak_detect.Parse_IM(self)
@@ -466,22 +470,27 @@ class Sample(sql_base.Base):
             value = replacement
         return value
 
-    @classmethod
-    def extract_sample_number(cls, file_string: str) -> int:
+    def extract_sample_label(self, file_string: str) -> int:
         ''' Extract digits from the file name to label plots '''
-        file_name_match = re.match(r"\D*(\d+)\D?.*", file_string)
+
+        extract_re = self.config.sample_label_extract_re.replace("/", "\\")  # TODO: Test
+        file_name_match = re.match(extract_re, file_string)
         if file_name_match is not None:
-            return file_name_match.group(1)
+            try:
+                return file_name_match.group(1)
+            except IndexError:
+                return file_string
         else:
             return file_string
 
     def get_sample_number(self):
         ''' Populate sample number from file name '''
-        self.sample_number = self.extract_sample_number(self.path.stem)
+        self.sample_number = self.extract_sample_label(self.path.stem)
         if self.sample_number is None:
             logging.error(f"Could not parse sample id from {self.path}")
 
     def _load_file_type(self, path_input: pathlib.Path):
+        ''' returns None if read failed or type unrecognized '''
         data = None
         try:
             if path_input.suffix.lower() == ".cdf":
